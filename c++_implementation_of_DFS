@@ -1,0 +1,40 @@
+ #include<iostream>
+     #include <vector>
+#include<stack>
+    using namespace std;
+
+    vector <int> adj[10];
+stack<int>q;
+    int main()
+    {
+        int x, y, nodes, edges;
+        cin >> nodes;       //Number of nodes
+        cin >> edges;       //Number of edges
+        bool vis[nodes];
+        for(int i=0;i<nodes;i++)
+            vis[i]=false;
+        for(int i = 0;i < edges;++i)
+        {
+                cin >> x >> y;
+            adj[x].push_back(y);
+            adj[y].push_back(x);       //Insert y in adjacency list of x
+         }cout<<" please enter the starting node"<<"\n";int s;
+         cin>>s;
+         q.push(s);
+         vis[s]=true;
+         while(!q.empty())
+         {
+             int p=q.top();
+             cout<<" "<<p;q.pop();
+        for(int j=0;j<adj[p].size();j++)
+        {
+            if(vis[adj[p][j]]==false)
+            {
+                q.push(adj[p][j]);
+                vis[adj[p][j]]=true;
+            }
+        }
+
+         }
+    return 0;
+    }
